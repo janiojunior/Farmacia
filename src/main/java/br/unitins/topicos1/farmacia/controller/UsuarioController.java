@@ -48,6 +48,7 @@ public class UsuarioController implements Serializable {
 	public void excluir(Usuario usu) {
 		UsuarioRepository repo = new UsuarioRepository();
 		repo.deletar(usu.getId());
+		listaUsuario = null;
 	}
 	
 	public void limpar() {
