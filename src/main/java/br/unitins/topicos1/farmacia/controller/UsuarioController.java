@@ -7,7 +7,10 @@ import java.util.List;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.faces.view.facelets.FaceletContext;
 import javax.inject.Named;
 
 import br.unitins.topicos1.farmacia.model.Usuario;
@@ -21,6 +24,14 @@ public class UsuarioController implements Serializable {
 	private static final long serialVersionUID = 168067236765100328L;
 	private Usuario usuario = null;
 	private List<Usuario> listaUsuario;
+	
+	public void validarLogin() {
+		if (getUsuario().getLogin().equals("teste123")) {
+			FacesMessage message = new FacesMessage(
+					FacesMessage.SEVERITY_ERROR, "Este login ja existe.", null);
+			FacesContext.getCurrentInstance().addMessage(null, message);
+		}
+	}
 	
 	public void incluir() {
 		UsuarioRepository repo = new UsuarioRepository();

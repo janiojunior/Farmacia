@@ -6,7 +6,7 @@
 	<title>Cadastro de Usuário</title>
 </h:head>
 <h:body>
-	<h:messages style="color:red" showDetail="false"/>
+	<h:messages id="messages" style="color:red" showDetail="false"/>
 	<h:form id="formulario">
 		<h:panelGroup id="pgPrincipal">
 			<h:panelGrid columns="2">
@@ -14,11 +14,32 @@
 				<h:inputText id="itNome" value="#{usuarioController.usuario.nome}"
 					required="true" 
 					requiredMessage="O nome deve ser informado!"
-				/>
+				>
+				<f:ajax 
+						execute="@this" 
+						render="messages" 
+						event="click" />
+				
+				</h:inputText>
 				<h:outputLabel value="Login: "/>
-				<h:inputText id="itLogin" value="#{usuarioController.usuario.login}"/>
+				<h:inputText 
+					id="itLogin" 
+					value="#{usuarioController.usuario.login}"
+					validatorMessage="A estrutura de cpf está inválida."
+					>
+					<f:validateRegex
+						pattern="([0-9]{3}[.][0-9]{3}[.][0-9]{3}[-][0-9]{2})"/>
+					<f:ajax 
+						execute="@this" 
+						render="messages" 
+						event="blur"
+						listener="#{usuarioController.validarLogin}" />
+					
+				</h:inputText>
 				<h:outputLabel value="Senha: "/>
-				<h:inputSecret value="#{usuarioController.usuario.senha}"/>
+				<h:inputSecret 
+					value="#{usuarioController.usuario.senha}"
+					immediate="true"/>
 			</h:panelGrid>
 			<h:panelGrid columns="4">
 				<h:commandButton 

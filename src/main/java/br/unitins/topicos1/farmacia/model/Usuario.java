@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
 
 @Entity
 public class Usuario implements Cloneable {
@@ -15,6 +16,7 @@ public class Usuario implements Cloneable {
 	private Integer id;
 	private String nome;
 	private String login;
+	@NotBlank(message = "A senha deve ser informada.")
 	private String senha;
 	
 	public Usuario getClone() {
