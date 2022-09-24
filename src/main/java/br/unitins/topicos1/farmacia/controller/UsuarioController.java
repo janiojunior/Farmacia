@@ -13,17 +13,32 @@ import javax.faces.view.ViewScoped;
 import javax.faces.view.facelets.FaceletContext;
 import javax.inject.Named;
 
+import br.unitins.topicos1.farmacia.model.Estado;
+import br.unitins.topicos1.farmacia.model.Perfil;
 import br.unitins.topicos1.farmacia.model.Usuario;
+import br.unitins.topicos1.farmacia.repository.EstadoRepository;
 import br.unitins.topicos1.farmacia.repository.UsuarioRepository;
 
 @Named
 @ViewScoped
 public class UsuarioController implements Serializable {
 	
-
 	private static final long serialVersionUID = 168067236765100328L;
 	private Usuario usuario = null;
 	private List<Usuario> listaUsuario;
+	private List<Estado> listaEstado;
+	
+	public List<Estado> getListaEstado() {
+		if (listaEstado == null) { 
+			EstadoRepository repo = new EstadoRepository();
+			listaEstado = repo.buscarTodos();
+		}
+		return listaEstado;
+	}
+	
+	public Perfil[] getListaPerfil() {
+		return Perfil.values();
+	}
 	
 	public void validarLogin() {
 		if (getUsuario().getLogin().equals("teste123")) {
