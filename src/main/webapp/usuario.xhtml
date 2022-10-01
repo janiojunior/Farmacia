@@ -59,7 +59,7 @@
 					value="Alterar" 
 					actionListener="#{usuarioController.alterar}" 
 					disabled="#{usuarioController.usuario.id == null}">
-					<f:ajax execute="itNome" render="dataTable itLogin"/>
+					<f:ajax execute="pgPrincipal" render="dataTable pgPrincipal"/>
 				</h:commandButton>
 					
 				<h:commandButton 
