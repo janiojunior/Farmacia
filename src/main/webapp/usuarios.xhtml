@@ -7,21 +7,24 @@
 	<h:outputStylesheet library = "css" name = "table.css"  /> 
 </h:head>
 <h:body>
-	<h1 style="width: 80%; text-align: center;">Usuários</h1>
-	<h:panelGrid width="80%" styleClass="right" columns="3">
-		<h:inputText style="width:100%"/>
-		<h:commandButton style="width:90%" value="Pesquisar"/>
-		<h:commandButton value="Adicionar"/>
-	</h:panelGrid>
-	<h:messages id="messages" style="color:red" showDetail="false"/>
 	<h:form id="formulario" >
+		<h1 style="width: 80%; text-align: center;">Usuários</h1>
+		<h:panelGrid width="80%" styleClass="right" columns="3">
+			<h:inputText style="width:100%"/>
+			<h:commandButton style="width:90%" value="Pesquisar"/>
+			<h:commandButton 
+				value="Adicionar"
+				action="#{usuariosController.adicionar}"/>
+		</h:panelGrid>
+		<h:messages id="messages" style="color:red" showDetail="false"/>
+
 		<h:dataTable  
 			width="80%"
 			styleClass="table"
 			headerClass="tableHeader"
 			rowClasses="tableOddRow, tableEvenRow"
 			id="dataTable"
-			value="#{usuarioController.listaUsuario}"
+			value="#{usuariosController.listaUsuario}"
 			var="obj">
 			<h:column >
 				<f:facet name="header">Id</f:facet> 
@@ -57,12 +60,12 @@
 				<f:facet name="header">Ação</f:facet> 
 				<h:commandButton 
 					value="Editar"
-					actionListener="#{usuarioController.editar(obj)}">
+					action="#{usuariosController.editar(obj)}">
 					<f:ajax  execute="@this" render="@form:pgPrincipal" />
 				</h:commandButton>
 				<h:commandButton 
 					value="Excluir"
-					actionListener="#{usuarioController.excluir(obj)}"/>
+					actionListener="#{usuariosController.excluir(obj)}"/>
 			</h:column>
 		</h:dataTable>
 	</h:form>
