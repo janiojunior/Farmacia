@@ -9,6 +9,7 @@ import javax.faces.context.Flash;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import br.unitins.topicos1.farmacia.application.Util;
 import br.unitins.topicos1.farmacia.model.Usuario;
 import br.unitins.topicos1.farmacia.repository.UsuarioRepository;
 
@@ -19,6 +20,14 @@ public class UsuariosController implements Serializable {
 	private static final long serialVersionUID = 8826311835173736094L;
 	
 	private List<Usuario> listaUsuario;
+	
+	public UsuariosController() {
+		Flash flash = FacesContext.
+				getCurrentInstance().
+				getExternalContext().getFlash();
+		// obtendo a mensagem do flash da tela anterior
+		Util.addInfoMessage((String)flash.get("mensagem"));
+	}
 
 	public List<Usuario> getListaUsuario() {
 		if (listaUsuario == null) {

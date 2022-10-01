@@ -9,6 +9,7 @@
 <h:body>
 	<h:form id="formulario" >
 		<h1 style="width: 80%; text-align: center;">Usuários</h1>
+		<h:messages id="messages" errorStyle="color:red" infoStyle="color:green" warnStyle="color:yellow" showDetail="false"/>
 		<h:panelGrid width="80%" styleClass="right" columns="3">
 			<h:inputText style="width:100%"/>
 			<h:commandButton style="width:90%" value="Pesquisar"/>
@@ -16,7 +17,6 @@
 				value="Adicionar"
 				action="#{usuariosController.adicionar}"/>
 		</h:panelGrid>
-		<h:messages id="messages" style="color:red" showDetail="false"/>
 
 		<h:dataTable  
 			width="80%"

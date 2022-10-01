@@ -9,6 +9,7 @@ import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import br.unitins.topicos1.farmacia.application.Util;
 import br.unitins.topicos1.farmacia.model.Estado;
 import br.unitins.topicos1.farmacia.model.Perfil;
 import br.unitins.topicos1.farmacia.model.Usuario;
@@ -26,6 +27,8 @@ public class FormUsuarioController implements Serializable {
 	public FormUsuarioController() {
 		// obtendo um usuario do flash scoped
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+		// metodo que nao deixa apagar o objeto enquanto nao alterar a url
+		flash.keep("flashUsuario");
 		setUsuario((Usuario)flash.get("flashUsuario"));
 	}
 	
@@ -44,6 +47,11 @@ public class FormUsuarioController implements Serializable {
 	public String salvar() {
 		UsuarioRepository repo = new UsuarioRepository();
 		repo.salvar(getUsuario());
+		
+		// adicionando a mensagem no flash para ser apresentado na outra tela
+		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
+		flash.put("mensagem", "Usuario salvo com sucesso.");
+		
 		// o cancelar retorna para a pagina anterior
 		return cancelar();
 	}

@@ -73,7 +73,7 @@ public class UsuarioController implements Serializable {
 	// acionado pelo botao da tabela (excluir)
 	public void excluir(Usuario usu) {
 		UsuarioRepository repo = new UsuarioRepository();
-		repo.deletar(usu.getId());
+		repo.deletar(usu);
 		listaUsuario = null;
 	}
 	
