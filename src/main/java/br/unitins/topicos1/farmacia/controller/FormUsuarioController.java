@@ -47,10 +47,11 @@ public class FormUsuarioController implements Serializable {
 	public String salvar() {
 		UsuarioRepository repo = new UsuarioRepository();
 		repo.salvar(getUsuario());
-		
-		// adicionando a mensagem no flash para ser apresentado na outra tela
+		// PARA HABILITAR O ENVIO DE MENSAGEM ENTRE TELAS DIFERENTES
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
-		flash.put("mensagem", "Usuario salvo com sucesso.");
+		flash.setKeepMessages(true);
+		
+		Util.addInfoMessage("Usuario salvo com sucesso.");
 		
 		// o cancelar retorna para a pagina anterior
 		return cancelar();

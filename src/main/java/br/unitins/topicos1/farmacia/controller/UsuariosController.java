@@ -21,13 +21,15 @@ public class UsuariosController implements Serializable {
 	
 	private List<Usuario> listaUsuario;
 	
-	public UsuariosController() {
-		Flash flash = FacesContext.
-				getCurrentInstance().
-				getExternalContext().getFlash();
-		// obtendo a mensagem do flash da tela anterior
-		Util.addInfoMessage((String)flash.get("mensagem"));
-	}
+// NAO EH NECESSARIO BUSCAR NO FLASH SCOPED A MENSAGEM
+	
+//	public UsuariosController() {
+//		Flash flash = FacesContext.
+//				getCurrentInstance().
+//				getExternalContext().getFlash();
+//		// obtendo a mensagem do flash da tela anterior
+//		Util.addInfoMessage((String)flash.get("mensagem"));
+//	}
 
 	public List<Usuario> getListaUsuario() {
 		if (listaUsuario == null) {
