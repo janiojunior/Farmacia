@@ -13,6 +13,7 @@ import javax.faces.view.ViewScoped;
 import javax.faces.view.facelets.FaceletContext;
 import javax.inject.Named;
 
+import br.unitins.topicos1.farmacia.application.Util;
 import br.unitins.topicos1.farmacia.model.Estado;
 import br.unitins.topicos1.farmacia.model.Perfil;
 import br.unitins.topicos1.farmacia.model.Usuario;
@@ -50,6 +51,7 @@ public class UsuarioController implements Serializable {
 	
 	public void incluir() {
 		UsuarioRepository repo = new UsuarioRepository();
+		getUsuario().setSenha(Util.hash(getUsuario().getSenha()));
 		repo.salvar(getUsuario());
 		limpar();
 		// foi setado como nulo para buscar no banco
