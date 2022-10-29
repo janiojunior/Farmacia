@@ -17,10 +17,9 @@
 			<h1 style="width: 100%;" >.: Farmacia.com :.</h1>
 			<div style="width: 100%; text-align: right;" >
 				<h:form rendered="#{templateController.usuarioLogado != null}" > 
-					<h:outputLabel value="Olá #{templateController.usuarioLogado.nome}"/>
-					<h:commandLink value=" (Sair)"   
-						action="#{templateController.encerrarSessao}"
-						style="color:white"/>
+					<h:outputLabel value="Olá #{templateController.usuarioLogado.nome} "/>
+					<h:commandLink value="(Sair)"   
+						action="#{templateController.encerrarSessao}"/>
 				</h:form>
 			</div>
 	 	</div>

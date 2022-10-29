@@ -7,8 +7,10 @@
 </h:head>
 <h:body>
 	<h:form>
+		<p:growl id="messages" life="2000" />
 		<div class="container">
-			<p:card style="width: 25em" styleClass="box" title="Login" subtitle="Entrada do Sistema">
+			<p:card style="width: 25em" styleClass="box" title="Login" >
+			       
 				<span class="ui-float-label"> 
 					<p:inputText 
 						id="login"
@@ -31,8 +33,10 @@
 					<p:commandButton 
 						icon="pi pi-check" 
 						value="Entrar" 
+						action="#{loginController.logar}"
 						process="@this login senha"
-						action="#{loginController.logar}"/>
+						update="@form"
+						/>
 					<p:commandButton 
 						icon="pi pi-times" 
 						resetValues="true"

@@ -20,6 +20,7 @@ public class Usuario implements Cloneable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String nome;
+	@NotBlank(message = "O login deve ser informado.")
 	private String login;
 	@NotBlank(message = "A senha deve ser informada.")
 	private String senha;
