@@ -1,24 +1,16 @@
 package br.unitins.topicos1.farmacia.model;
 
 import java.time.LocalDate;
-import java.util.Objects;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotBlank;
 
 @Entity
-public class Usuario implements Cloneable {
+public class Usuario extends DefaultEntity implements Cloneable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 	private String nome;
 	@NotBlank(message = "O login deve ser informado.")
 	private String login;
@@ -27,6 +19,10 @@ public class Usuario implements Cloneable {
 	private LocalDate dataNascimento;
 
 	private Perfil perfil;
+	
+	@OneToOne
+	@JoinColumn(name = "id_endereco", unique = true)
+	private Endereco endereco;
 
 	@ManyToOne
 	@JoinColumn(name = "id_estado")
@@ -38,14 +34,6 @@ public class Usuario implements Cloneable {
 		} catch (CloneNotSupportedException e) {
 			return null;
 		}
-	}
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	public String getNome() {
@@ -94,23 +82,6 @@ public class Usuario implements Cloneable {
 
 	public void setEstado(Estado estado) {
 		this.estado = estado;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(id);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Usuario other = (Usuario) obj;
-		return Objects.equals(id, other.id);
 	}
 
 }
