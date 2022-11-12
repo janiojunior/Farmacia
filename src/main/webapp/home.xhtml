@@ -29,7 +29,12 @@
 		                	<f:convertNumber  currencySymbol="R$" type="currency"/>
 		                </h:outputText>
 		
-						<p:commandButton value="Adicionar ao Carrinho" icon="pi pi-shopping-cart" style="font-size: medium; margin-top: 10px;"/>
+						<p:commandButton 
+							value="Adicionar ao Carrinho" 
+							icon="pi pi-shopping-cart" 
+							style="font-size: medium; margin-top: 10px;"
+							actionListener="#{homeController.adicionarCarrinho(remedio)}"
+							process="@this"/>
 		            </h:panelGrid>
 		        </p:card>
 			</p:dataViewGridItem>

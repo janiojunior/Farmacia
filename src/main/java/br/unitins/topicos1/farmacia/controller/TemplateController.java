@@ -40,9 +40,9 @@ public class TemplateController implements Serializable {
 		return (Usuario) session.get("usuarioLogado");
 	}
 	
-	public void encerrarSessao() {
+	public String encerrarSessao() {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-		return;
+		return "login2.xhtml?faces-redirect=true";
 	}
 
 	public String getNomeRemedio() {

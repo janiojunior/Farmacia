@@ -19,6 +19,7 @@ public class HomeController {
 	
 	@Inject
 	private RemedioRepository repository;
+	private List<Remedio> listaRemedio;
 	
 	@PostConstruct
 	public void init() {
@@ -30,8 +31,11 @@ public class HomeController {
 		else
 			setListaRemedio(repository.buscarTodos());
 	}
+	
+	public void adicionarCarrinho(Remedio remedio) {
+		
+	}
 
-	private List<Remedio> listaRemedio;
 
 	public List<Remedio> getListaRemedio() {
 		return listaRemedio;
