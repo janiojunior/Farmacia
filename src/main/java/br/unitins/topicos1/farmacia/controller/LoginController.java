@@ -36,7 +36,7 @@ public class LoginController {
 		Map session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		session.put("usuarioLogado", usuarioLogado);
 		
-		return "usuarios.xhtml?faces-redirect=true";
+		return "home.xhtml?faces-redirect=true";
 	}
 
 	public Usuario getUsuario() {
