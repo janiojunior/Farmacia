@@ -21,6 +21,8 @@ public class TemplateController implements Serializable {
 
 	private static final long serialVersionUID = -747823450126578199L;
 	
+	private String nomeRemedio;
+	
 	public Usuario getUsuarioLogado() {
 		Map session = FacesContext.getCurrentInstance().getExternalContext().getSessionMap();
 		return (Usuario) session.get("usuarioLogado");
@@ -30,5 +32,15 @@ public class TemplateController implements Serializable {
 		FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
 		return;
 	}
+
+	public String getNomeRemedio() {
+		return nomeRemedio;
+	}
+
+	public void setNomeRemedio(String nomeRemedio) {
+		this.nomeRemedio = nomeRemedio;
+	}
+	
+	
 
 }
