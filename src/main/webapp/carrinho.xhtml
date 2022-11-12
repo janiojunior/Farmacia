@@ -11,7 +11,7 @@
 	<div class="container">
 		<h1 class="text-center wdi-red">Carrinho de Compras</h1>
 		<h:form id="formDataTable">
-	       <p:dataView var="remedio" value="#{homeController.listaRemedio}" rows="6" paginator="true" 
+	       <p:dataView var="item" value="#{carrinhoController.itensCarrinho}" rows="6" paginator="true" 
 	       				currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} produtos"
 	       				
 	       				rowsPerPageTemplate="6,12,18"
@@ -26,14 +26,14 @@
 			            <p:outputPanel style="font-size: medium;">
 			                <h:panelGrid columns="2" cellpadding="5">
 			                    <h:outputText value="Remédio:" />
-			                    <h:outputText value="#{remedio.nome}" style="font-weight: bold"/>
+			                    <h:outputText value="#{item.remedio.nome}" style="font-weight: bold"/>
 			
 			                    <h:outputText value="Preço:" />
-			                    <h:outputText style="font-weight: bold; " value="#{remedio.preco}" >
+			                    <h:outputText style="font-weight: bold; " value="#{item.remedio.preco}" >
 			                		<f:convertNumber  currencySymbol="R$" type="currency"/>
 			                	</h:outputText>
 			                	<h:outputText value="Quantidade:" />
-			                    <h:outputText value= "1" />
+			                    <h:outputText value= "#{item.quantidade}" />
 			                    
 			                    <p:commandButton value="Remover"/>
 			

@@ -7,18 +7,18 @@ import javax.persistence.ManyToOne;
 @Entity
 public class ItemCompra extends DefaultEntity {
 	
-	private Integer quantidade;
+	private int quantidade;
 	private Double preco;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_remedio")
 	private Remedio remedio;
 
-	public Integer getQuantidade() {
+	public int getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(Integer quantidade) {
+	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
 
