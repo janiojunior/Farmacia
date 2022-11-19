@@ -13,7 +13,9 @@ import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
 import br.unitins.topicos1.farmacia.application.RepositoryException;
+import br.unitins.topicos1.farmacia.application.Session;
 import br.unitins.topicos1.farmacia.application.Util;
+import br.unitins.topicos1.farmacia.model.Compra;
 import br.unitins.topicos1.farmacia.model.Usuario;
 import br.unitins.topicos1.farmacia.repository.RemedioRepository;
 import br.unitins.topicos1.farmacia.repository.UsuarioRepository;
@@ -51,6 +53,17 @@ public class TemplateController implements Serializable {
 
 	public void setNomeRemedio(String nomeRemedio) {
 		this.nomeRemedio = nomeRemedio;
+	}
+	
+	public Integer getQuantidadeCarrinho() {
+		Session session = Session.getInstance();
+		Compra compra = (Compra) session.get("carrinho");
+		
+		if (compra == null || compra.getListaItemCompra() == null)
+			return null;
+		
+		return compra.getListaItemCompra().size();
+		
 	}
 	
 	

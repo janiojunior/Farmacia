@@ -97,7 +97,14 @@
         	</h:commandLink>
         
         </li>
-        <li><a href="carrinho.xhtml"><span class="glyphicon glyphicon-shopping-cart"></span> Carrinho</a></li>
+        <li>
+        	<a href="carrinho.xhtml">
+        	     <p:badge value="#{templateController.getQuantidadeCarrinho()}">
+			         <i class="pi pi-shopping-cart" style="font-size: 2rem"/>
+			     </p:badge>
+        		 Carrinho
+        	</a>
+        </li>
       </ul>
     </div>
   </div>
