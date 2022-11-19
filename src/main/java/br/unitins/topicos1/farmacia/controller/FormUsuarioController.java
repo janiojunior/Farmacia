@@ -46,7 +46,13 @@ public class FormUsuarioController implements Serializable {
 	
 	public String salvar() {
 		UsuarioRepository repo = new UsuarioRepository();
-		repo.salvar(getUsuario());
+		try {
+			repo.salvar(getUsuario());
+		} catch (Exception e) {
+			Util.addErrorMessage(e.getMessage());
+			e.printStackTrace();
+			return null;
+		}
 		// PARA HABILITAR O ENVIO DE MENSAGEM ENTRE TELAS DIFERENTES
 		Flash flash = FacesContext.getCurrentInstance().getExternalContext().getFlash();
 		flash.setKeepMessages(true);

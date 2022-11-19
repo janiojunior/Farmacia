@@ -18,10 +18,15 @@ public class Repository<T> {
 		return entityManager;
 	}
 	
-	public void salvar(T obj) {
-		getEntityManager().getTransaction().begin();
-		getEntityManager().merge(obj);
-		getEntityManager().getTransaction().commit();
+	public void salvar(T obj) throws Exception {
+		try {
+			getEntityManager().getTransaction().begin();
+			getEntityManager().merge(obj);
+			getEntityManager().getTransaction().commit();
+		} catch (Exception e){
+			e.printStackTrace();
+			throw new Exception("Erro ao salvar. Procure um SAC.");
+		}
 	}
 	
 	public void deletar(T obj) {

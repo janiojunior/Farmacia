@@ -52,7 +52,13 @@ public class UsuarioController implements Serializable {
 	public void incluir() {
 		UsuarioRepository repo = new UsuarioRepository();
 		getUsuario().setSenha(Util.hash(getUsuario().getSenha()));
-		repo.salvar(getUsuario());
+		try {
+			repo.salvar(getUsuario());
+		} catch (Exception e) {
+			Util.addErrorMessage(e.getMessage());
+			e.printStackTrace();
+			return;
+		}
 		limpar();
 		// foi setado como nulo para buscar no banco
 		listaUsuario = null;
@@ -60,7 +66,13 @@ public class UsuarioController implements Serializable {
 	
 	public void alterar() {
 		UsuarioRepository repo = new UsuarioRepository();
-		repo.salvar(getUsuario());
+		try {
+			repo.salvar(getUsuario());
+		} catch (Exception e) {
+			Util.addErrorMessage(e.getMessage());
+			e.printStackTrace();
+			return;
+		}
 		limpar();
 		// foi setado como nulo para buscar no banco
 		listaUsuario = null;

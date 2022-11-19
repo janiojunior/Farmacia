@@ -7,6 +7,7 @@ public class Pagamento extends DefaultEntity {
 
 	private Integer quantidadeParcela;
 	private TipoPagamento tipoPagamento;
+	private BandeiraCartao bandeiraCartao;
 
 	public Integer getQuantidadeParcela() {
 		return quantidadeParcela;
@@ -24,4 +25,12 @@ public class Pagamento extends DefaultEntity {
 		this.tipoPagamento = tipoPagamento;
 	}
 
+	public BandeiraCartao getBandeiraCartao() {
+		return bandeiraCartao;
+	}
+
+	public void setBandeiraCartao(BandeiraCartao bandeiraCartao) {
+		this.bandeiraCartao = bandeiraCartao;
+	}
+	
 }
