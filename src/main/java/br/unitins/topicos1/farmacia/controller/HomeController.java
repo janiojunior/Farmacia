@@ -12,6 +12,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import br.unitins.topicos1.farmacia.application.Session;
+import br.unitins.topicos1.farmacia.application.Util;
 import br.unitins.topicos1.farmacia.model.Compra;
 import br.unitins.topicos1.farmacia.model.ItemCompra;
 import br.unitins.topicos1.farmacia.model.Remedio;
@@ -50,10 +51,10 @@ public class HomeController {
 		if (carrinho.getListaItemCompra() == null)
 			carrinho.setListaItemCompra(new ArrayList<ItemCompra>());
 		
-		
+			
 		// buscando um item na lista do carrinho
-		Optional<ItemCompra> opItem = carrinho.getListaItemCompra().stream().
-				findAny().filter(item -> item.getRemedio().equals(remedio));
+		Optional<ItemCompra> opItem = carrinho.getListaItemCompra().stream()
+				.filter(item -> item.getRemedio().equals(remedio)).findAny();
 		
 		ItemCompra item = opItem.orElse(new ItemCompra());
 		
@@ -78,6 +79,8 @@ public class HomeController {
 		
 		// adicionando na sessao
 		session.put("carrinho", carrinho);
+		
+		Util.addInfoMessage(item.getRemedio().getNome()+ " adicionado ao carrinho.");
 		
 	}
 
