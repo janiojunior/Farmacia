@@ -1,6 +1,7 @@
 package br.unitins.topicos1.farmacia.controller;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,6 +76,9 @@ public class FinalizarCompraController implements Serializable{
 		for (ItemCompra item : carrinho.getListaItemCompra()) {
 			item.setCompra(carrinho);
 		}
+		
+		// setanto a data e hora
+		carrinho.setDataHora(LocalDateTime.now());
 		
 		
 		try {
