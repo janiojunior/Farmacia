@@ -8,7 +8,6 @@
 
 <ui:composition  template="newtemplate.xhtml">
 <ui:define name="content" >
-	<p:growl id="growl" showDetail="true" life="1600" />
     <h:form id="form">
         <p:dataView var="remedio" value="#{homeController.listaRemedio}" rows="6" paginator="true" 
        				currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} produtos"

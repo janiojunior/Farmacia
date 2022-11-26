@@ -71,6 +71,12 @@ public class FinalizarCompraController implements Serializable{
 		carrinho.setUsuario(usuario);
 		carrinho.setPagamento(getPagamento());
 		
+		// preenchendo a compra para cada item do carrinho
+		for (ItemCompra item : carrinho.getListaItemCompra()) {
+			item.setCompra(carrinho);
+		}
+		
+		
 		try {
 			compraRepository.salvar(carrinho);
 			Util.addInfoMessage("Compra realizada com sucesso.");

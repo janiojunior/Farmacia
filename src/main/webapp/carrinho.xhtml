@@ -8,10 +8,20 @@
 <ui:composition template="newtemplate.xhtml">
 <ui:define name="content">
 
-	<h1 style="text-align: center;">Carrinho de Compras</h1>
-	<h1 style="text-align: center;">
-		<p:commandButton value="Finalizar Compra"/>
-	</h1>
+	<h:form>
+		<h1 style="text-align: center;">Carrinho de Compras</h1>
+		<h1 style="text-align: center;">
+			<p:commandButton 
+				value="Finalizar Compra" 
+				actionListener="#{carrinhoController.finalizarCompra}"
+				update="growl">
+				<p:confirm 
+					disabled="#{templateController.usuarioLogado != null}" 
+					header="Logar no Sistema" 
+					message="Para concluir, é necessário estar logado. Deseja ir para a tela de login?" icon="pi pi-exclamation-triangle"/>
+			</p:commandButton>
+		</h1>
+	</h:form>
 	<h:form id="formDataTable">
 	    <div class="card">
 	        <p:dataTable var="item" value="#{carrinhoController.itensCarrinho}">

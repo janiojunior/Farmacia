@@ -1,5 +1,6 @@
 package br.unitins.topicos1.farmacia.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -11,8 +12,12 @@ import br.unitins.topicos1.farmacia.model.Remedio;
 public class RemedioRepository extends Repository<Remedio> {
 
 	public List<Remedio> buscarTodos() {
-		Query query = getEntityManager().createQuery("SELECT r FROM Remedio r ORDER BY r.nome");
-		return query.getResultList();
+		try {
+			Query query = getEntityManager().createQuery("SELECT r FROM Remedio r ORDER BY r.nome");
+			return query.getResultList();
+		} catch (Exception e) {
+			return new ArrayList<Remedio>();
+		}
 	}
 	
 	public List<Remedio> buscarPeloNome(String nome) {

@@ -11,6 +11,10 @@ public class ItemCompra extends DefaultEntity {
 	private Double preco;
 	
 	@ManyToOne
+	@JoinColumn(nullable = false)
+	private Compra compra;
+	
+	@ManyToOne
 	@JoinColumn(name = "id_remedio")
 	private Remedio remedio;
 
@@ -37,7 +41,13 @@ public class ItemCompra extends DefaultEntity {
 	public void setRemedio(Remedio remedio) {
 		this.remedio = remedio;
 	}
-	
-	
 
+	public Compra getCompra() {
+		return compra;
+	}
+
+	public void setCompra(Compra compra) {
+		this.compra = compra;
+	}
+	
 }

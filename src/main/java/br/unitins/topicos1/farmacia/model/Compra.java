@@ -3,6 +3,7 @@ package br.unitins.topicos1.farmacia.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,10 +24,10 @@ public class Compra extends DefaultEntity {
 	@JoinColumn(name = "id_endereco", unique = true)
 	private Endereco endereco;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "compra")
 	private List<ItemCompra> listaItemCompra;
 
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id_pagamento", unique = true)
 	private Pagamento pagamento;
 

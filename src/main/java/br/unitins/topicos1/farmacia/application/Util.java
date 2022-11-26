@@ -1,5 +1,7 @@
 package br.unitins.topicos1.farmacia.application;
 
+import java.io.IOException;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.FacesContext;
@@ -13,6 +15,16 @@ public class Util {
 		System.out.println(DigestUtils.sha256Hex("ana"));
 		System.out.println(DigestUtils.sha256Hex("Ana"));
 		
+	}
+	
+	public static void redirect(String page) {
+		try {
+			FacesContext.
+				getCurrentInstance().
+				getExternalContext().redirect(page);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public static String hash(String valor) {
