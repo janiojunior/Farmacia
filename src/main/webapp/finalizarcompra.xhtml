@@ -5,16 +5,16 @@
 	xmlns:jsf="http://xmlns.jcp.org/jsf"
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:p="http://primefaces.org/ui">
-<ui:composition template="template.xhtml">
+<ui:composition template="newtemplate.xhtml">
 <ui:define name="content">
 
-	<h1 class="text-center wdi-red">Finalizar Compra</h1>
+	<h1 style="text-align: center; margin: unset; ">Finalizar Compra</h1>
 	<p:growl id="growl" showDetail="true" life="1600" />
 	
-	<h:form id="formDataTable" styleClass="container">
-		<div class="container">
+	<h:form id="formDataTable">
+		<div >
 		    <p:card 
-		    	style="width: 100%; margin-bottom: 2em" >
+		    	style="width: 100%; margin-bottom: 1em; " >
 	    	    <f:facet name="title">
 			      <h3 class="text-center wdi-red">Produtos</h3>
 			   </f:facet>
@@ -40,13 +40,13 @@
 		        </p:dataTable>
 		    </p:card>
 		</div>
-		<div class="container">
-		    <p:card style="width: 100%; margin-bottom: 2em">
+		<div >
+		    <p:card style="text-align: center; width: 100%; margin-bottom: 2em">
 	    	    <f:facet name="title">
-			      <h3 class="text-center wdi-red">Pagamento</h3>
+			      <h3 style="text-align: center; margin: unset; ">Pagamento</h3>
 			   </f:facet>
 			   
-			   <p:panelGrid columns="2" style="border: 0px;">
+			   <p:panelGrid columns="2" style="display: inline-block; border: 0px;">
 				   
 	                <p:outputLabel value="Quantidade de Parcelas: " />
 	                <p:inputText style="width: 200px" value="#{finalizarCompraController.pagamento.quantidadeParcela}" />
@@ -66,14 +66,16 @@
                          <f:selectItem itemLabel="" itemValue="" />
                          <f:selectItems value="#{finalizarCompraController.listaBandeiraCartao}"/>
                      </p:selectOneMenu>  
-                     
+
                 </p:panelGrid>
-		    	<p:commandButton 
+		    </p:card>
+		    <div style="text-align: center;">
+	          	<p:commandButton 
 		    		actionListener="#{finalizarCompraController.finalizarCompra}"
 		    		value="Finalizar Compra"
 		    		process="@form"
 		    		update="growl"/>
-		    </p:card>
+	    	</div>
 	   	</div>
 	</h:form>
 </ui:define>
