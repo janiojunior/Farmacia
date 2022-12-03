@@ -10,11 +10,12 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import br.unitins.topicos1.farmacia.model.Usuario;
 
-@WebFilter(filterName = "SecurityFilter", urlPatterns = {"/admin/*"} )
+@WebFilter(filterName = "SecurityFilter", urlPatterns = {"/faces/admin/*"} )
 public class SecurityFilter implements Filter {
 
 	@Override
@@ -32,18 +33,19 @@ public class SecurityFilter implements Filter {
 		if (session != null)
 			usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
 		
-//		// se nao estiver logado, redirecionar para a pagina de login
-//		if (usuarioLogado == null) {
-//			((HttpServletResponse)response).sendRedirect("/Pinga/login2.xhtml");
-//		} else {
-//			if (usuarioLogado.getPerfil().equals(Perfil.ADMINISTRADOR)
-//					|| usuarioLogado.getPerfil().equals(Perfil.FUNCIONARIO)) {
-//				// permitindo a execucao comleta do protocolo
-//				chain.doFilter(request, response);
-//			} else {
-//				((HttpServletResponse)response).sendRedirect("/Pinga/semacesso.xhtml");
-//			}
-//		}
+		
+		// se nao estiver logado, redirecionar para a pagina de login
+		if (usuarioLogado == null) {
+			((HttpServletResponse)response).sendRedirect("/Farmacia/faces/login2.xhtml");
+		} else {
+			
+			if (usuarioLogado.getPerfil().getPaginas().contains(endereco)) {
+				// segue o fluxo ...
+				chain.doFilter(request, response);
+			} else {
+				((HttpServletResponse)response).sendRedirect("/Farmacia/semacesso.xhtml");
+			}
+		}
 		
 	}
 	
