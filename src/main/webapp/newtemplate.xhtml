@@ -177,13 +177,21 @@ body {
 </div>
 
 <div class="footer">
-  <h2>Footer</h2>
+  <h2>UNITINS | Tópicos em Programação I</h2>
 </div>
 
    <p:confirmDialog global="true" showEffect="fade" hideEffect="fade" responsive="true" width="350">
        <p:commandButton value="Não" type="button" styleClass="ui-confirmdialog-no ui-button-flat"/>
        <p:commandButton value="Sim" type="button" styleClass="ui-confirmdialog-yes" />
    </p:confirmDialog>
+   
+    <p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()"/>
+
+    <p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+        <div class="text-center">
+        	<p:graphicImage library="images" name="loading.gif" width="50%"/>
+        </div>
+    </p:dialog>   
 
 </h:body>
 </html>
